@@ -6,7 +6,7 @@
 #
 Name     : pypi-pythran
 Version  : 0.11.0
-Release  : 11
+Release  : 12
 URL      : https://files.pythonhosted.org/packages/88/9f/161f08131abf7f23920cee29b691de27f10fd97ac09fb2f3532b3a7f9b96/pythran-0.11.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/88/9f/161f08131abf7f23920cee29b691de27f10fd97ac09fb2f3532b3a7f9b96/pythran-0.11.0.tar.gz
 Source1  : https://files.pythonhosted.org/packages/88/9f/161f08131abf7f23920cee29b691de27f10fd97ac09fb2f3532b3a7f9b96/pythran-0.11.0.tar.gz.asc
@@ -18,9 +18,6 @@ Requires: pypi-pythran-license = %{version}-%{release}
 Requires: pypi-pythran-python = %{version}-%{release}
 Requires: pypi-pythran-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
-Provides: pythran
-Provides: pythran-python
-Provides: pythran-python3
 BuildRequires : pypi(beniget)
 BuildRequires : pypi(gast)
 BuildRequires : pypi(numpy)
@@ -87,7 +84,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1641485715
+export SOURCE_DATE_EPOCH=1650929203
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
