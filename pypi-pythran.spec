@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x7B24DA8C9551659F (sguelton@redhat.com)
 #
 Name     : pypi-pythran
-Version  : 0.11.0
-Release  : 17
-URL      : https://files.pythonhosted.org/packages/88/9f/161f08131abf7f23920cee29b691de27f10fd97ac09fb2f3532b3a7f9b96/pythran-0.11.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/88/9f/161f08131abf7f23920cee29b691de27f10fd97ac09fb2f3532b3a7f9b96/pythran-0.11.0.tar.gz
-Source1  : https://files.pythonhosted.org/packages/88/9f/161f08131abf7f23920cee29b691de27f10fd97ac09fb2f3532b3a7f9b96/pythran-0.11.0.tar.gz.asc
+Version  : 0.12.0
+Release  : 18
+URL      : https://files.pythonhosted.org/packages/99/e0/ed0e81de05cfa4ecbcbceec6603d175387d8bc7a6332cbfd155d09958ccf/pythran-0.12.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/99/e0/ed0e81de05cfa4ecbcbceec6603d175387d8bc7a6332cbfd155d09958ccf/pythran-0.12.0.tar.gz
+Source1  : https://files.pythonhosted.org/packages/99/e0/ed0e81de05cfa4ecbcbceec6603d175387d8bc7a6332cbfd155d09958ccf/pythran-0.12.0.tar.gz.asc
 Summary  : Ahead of Time compiler for numeric kernels
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -24,16 +24,15 @@ BuildRequires : pypi(numpy)
 BuildRequires : pypi(ply)
 
 %description
+Pythran
+#######
+https://pythran.readthedocs.io
+What is it?
+-----------
 Pythran is an ahead of time compiler for a subset of the Python language, with a
-        focus on scientific computing. It takes a Python module annotated with a few
-        interface descriptions and turns it into a native Python module with the same
-        interface, but (hopefully) faster.
-        
-        It is meant to efficiently compile **scientific programs**, and takes advantage
-        of multi-cores and SIMD instruction units.
-        
-        Until 0.9.5 (included), Pythran was supporting Python 3 and Python 2.7.
-        It now only supports Python **3**.
+focus on scientific computing. It takes a Python module annotated with a few
+interface descriptions and turns it into a native Python module with the same
+interface, but (hopefully) faster.
 
 %package bin
 Summary: bin components for the pypi-pythran package.
@@ -76,10 +75,10 @@ python3 components for the pypi-pythran package.
 
 
 %prep
-%setup -q -n pythran-0.11.0
-cd %{_builddir}/pythran-0.11.0
+%setup -q -n pythran-0.12.0
+cd %{_builddir}/pythran-0.12.0
 pushd ..
-cp -a pythran-0.11.0 buildavx2
+cp -a pythran-0.12.0 buildavx2
 popd
 
 %build
@@ -87,7 +86,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1656402600
+export SOURCE_DATE_EPOCH=1664376160
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -112,8 +111,8 @@ popd
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pypi-pythran
-cp %{_builddir}/pythran-0.11.0/LICENSE %{buildroot}/usr/share/package-licenses/pypi-pythran/6a7b1189c16283fa7f28dbdadda64777c82412a2
-cp %{_builddir}/pythran-0.11.0/docs/LICENSE.rst %{buildroot}/usr/share/package-licenses/pypi-pythran/0fcc278a4a3d0341c919d405ce4a80f9c20f7c0c
+cp %{_builddir}/pythran-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pypi-pythran/6a7b1189c16283fa7f28dbdadda64777c82412a2 || :
+cp %{_builddir}/pythran-%{version}/docs/LICENSE.rst %{buildroot}/usr/share/package-licenses/pypi-pythran/0fcc278a4a3d0341c919d405ce4a80f9c20f7c0c || :
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
