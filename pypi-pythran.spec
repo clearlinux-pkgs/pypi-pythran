@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x7B24DA8C9551659F (sguelton@redhat.com)
 #
 Name     : pypi-pythran
-Version  : 0.12.0
-Release  : 21
-URL      : https://files.pythonhosted.org/packages/99/e0/ed0e81de05cfa4ecbcbceec6603d175387d8bc7a6332cbfd155d09958ccf/pythran-0.12.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/99/e0/ed0e81de05cfa4ecbcbceec6603d175387d8bc7a6332cbfd155d09958ccf/pythran-0.12.0.tar.gz
-Source1  : https://files.pythonhosted.org/packages/99/e0/ed0e81de05cfa4ecbcbceec6603d175387d8bc7a6332cbfd155d09958ccf/pythran-0.12.0.tar.gz.asc
+Version  : 0.12.1
+Release  : 22
+URL      : https://files.pythonhosted.org/packages/4a/1b/059a68158bf65c857cfd6b80aed06a8fd35f2582cf548fb96f0b519b0d2b/pythran-0.12.1.tar.gz
+Source0  : https://files.pythonhosted.org/packages/4a/1b/059a68158bf65c857cfd6b80aed06a8fd35f2582cf548fb96f0b519b0d2b/pythran-0.12.1.tar.gz
+Source1  : https://files.pythonhosted.org/packages/4a/1b/059a68158bf65c857cfd6b80aed06a8fd35f2582cf548fb96f0b519b0d2b/pythran-0.12.1.tar.gz.asc
 Summary  : Ahead of Time compiler for numeric kernels
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -22,6 +22,9 @@ BuildRequires : pypi(beniget)
 BuildRequires : pypi(gast)
 BuildRequires : pypi(numpy)
 BuildRequires : pypi(ply)
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 
 %description
 Pythran
@@ -75,10 +78,10 @@ python3 components for the pypi-pythran package.
 
 
 %prep
-%setup -q -n pythran-0.12.0
-cd %{_builddir}/pythran-0.12.0
+%setup -q -n pythran-0.12.1
+cd %{_builddir}/pythran-0.12.1
 pushd ..
-cp -a pythran-0.12.0 buildavx2
+cp -a pythran-0.12.1 buildavx2
 popd
 
 %build
@@ -86,15 +89,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1664376160
+export SOURCE_DATE_EPOCH=1673892524
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
