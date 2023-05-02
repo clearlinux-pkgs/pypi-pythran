@@ -1,5 +1,5 @@
 PKG_NAME := pypi-pythran
-URL = https://files.pythonhosted.org/packages/4a/1b/059a68158bf65c857cfd6b80aed06a8fd35f2582cf548fb96f0b519b0d2b/pythran-0.12.1.tar.gz
+URL = https://files.pythonhosted.org/packages/6b/ab/fa91b9a43381d966b96b88883eb819ae26cef446a0e0be8288d2845212b3/pythran-0.13.0.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
