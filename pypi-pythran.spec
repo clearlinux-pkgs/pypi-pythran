@@ -5,7 +5,7 @@
 #
 Name     : pypi-pythran
 Version  : 0.14.0
-Release  : 25
+Release  : 26
 URL      : https://files.pythonhosted.org/packages/2c/ab/a647b8cc3ac1aa07cde06875157696e4522958fb8363474bce21c302d4d8/pythran-0.14.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/2c/ab/a647b8cc3ac1aa07cde06875157696e4522958fb8363474bce21c302d4d8/pythran-0.14.0.tar.gz
 Summary  : Ahead of Time compiler for numeric kernels
