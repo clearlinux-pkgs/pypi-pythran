@@ -6,10 +6,10 @@
 # autospec commit: 5905be9
 #
 Name     : pypi-pythran
-Version  : 0.16.0
-Release  : 29
-URL      : https://files.pythonhosted.org/packages/b7/a8/a968d794934811bf0ef4ffb7f95efebdaea4b139b44d07c018ae88399592/pythran-0.16.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/b7/a8/a968d794934811bf0ef4ffb7f95efebdaea4b139b44d07c018ae88399592/pythran-0.16.0.tar.gz
+Version  : 0.16.1
+Release  : 30
+URL      : https://files.pythonhosted.org/packages/73/32/f892675c5009cd4c1895ded3d6153476bf00adb5ad1634d03635620881f5/pythran-0.16.1.tar.gz
+Source0  : https://files.pythonhosted.org/packages/73/32/f892675c5009cd4c1895ded3d6153476bf00adb5ad1634d03635620881f5/pythran-0.16.1.tar.gz
 Summary  : Ahead of Time compiler for numeric kernels
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -80,13 +80,13 @@ python3 components for the pypi-pythran package.
 
 
 %prep
-%setup -q -n pythran-0.16.0
-cd %{_builddir}/pythran-0.16.0
+%setup -q -n pythran-0.16.1
+cd %{_builddir}/pythran-0.16.1
 pushd ..
-cp -a pythran-0.16.0 buildavx2
+cp -a pythran-0.16.1 buildavx2
 popd
 pushd ..
-cp -a pythran-0.16.0 buildapx
+cp -a pythran-0.16.1 buildapx
 popd
 
 %build
@@ -94,7 +94,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1716264194
+export SOURCE_DATE_EPOCH=1716908699
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
